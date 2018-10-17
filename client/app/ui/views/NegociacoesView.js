@@ -1,11 +1,5 @@
 // client/app/ui/views/NegociacoesView.js
-class NegociacoesView{
-    constructor(seletor){
-        this._elemento = document.querySelector(seletor);
-    }
-    update(model){
-        this._elemento.innerHTML = this.template(model);
-    }
+class NegociacoesView extends View{
     template(model){
         return `
         <table class="table table-hover table-bordered">

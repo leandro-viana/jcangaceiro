@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Negociações</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    
+    <link rel="stylesheet" href="css/bootstrap-theme.css">    
 </head>
 <body class="container">
     
     <h1 class="text-center">Negociações</h1>
-    
+    <div id="mensagemView"></div>
+
     <form class="form">
         
         <div class="form-group">
@@ -49,7 +49,10 @@
 de NegociacaoController que depende da classe Negociacoes que ainda não foi carregada.-->
     <script src="app/ui/converters/DateConverter.js"></script>
     <script src="app/domain/negociacao/Negociacoes.js"></script>
+    <script src="app/ui/views/View.js"></script>
     <script src="app/ui/views/NegociacoesView.js"></script>
+    <script src="app/ui/models/Mensagem.js"></script>
+    <script src="app/ui/views/MensagemView.js"></script>
     <script src="app/app.js"></script>
 </body>
 </html>
