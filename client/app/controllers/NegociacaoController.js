@@ -69,24 +69,24 @@ class NegociacaoController{
         this._negociacoes.esvazia();
         this._mensagem.texto = 'Negociações apagadas com sucesso';
     }
-        importaNegociacoes() {
+    importaNegociacoes() {
 
-            this._service
-                .obterNegociacoesDoPeriodo()
-                .then(negociacoes => {
+        this._service
+            .obtemNegociacoesDoPeriodo()
+            .then(negociacoes => {
     
-                    negociacoes.filter(novaNegociacao =>
+                negociacoes.filter(novaNegociacao =>
     
-                        !this._negociacoes.paraArray().some(negociacaoExistente =>
+                    !this._negociacoes.paraArray().some(negociacaoExistente =>
     
-                            novaNegociacao.equals(negociacaoExistente)))
+                        novaNegociacao.equals(negociacaoExistente)))
     
-                        .forEach(negociacao => this._negociacoes.adiciona(negociacao));
+                    .forEach(negociacao => this._negociacoes.adiciona(negociacao));
     
-                    this._mensagem.texto = 'Negociações do período importadas com sucesso';
-                })
-                .catch(err => this._mensagem.texto = err);
-        }
+                this._mensagem.texto = 'Negociações do período importadas com sucesso';
+            })
+            .catch(err => this._mensagem.texto = err);
+    }
 
 
 }
