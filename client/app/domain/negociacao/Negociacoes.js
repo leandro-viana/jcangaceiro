@@ -21,14 +21,7 @@ class Negociacoes{
         return this._negociacoes
             .reduce((total, negociacao)=>
                 total + negociacao.volume, 0);
-            
-    
-            
-        let total = 0;
-        for(let i=0; i<this._negociacoes.length;i++){
-            total+=this._negociacoes[i].volume;
-        }
-        return total;
+        
     }
     // Atribui um novo array sem elementos(vazio) à propriedade this._negociacoes quando o usuário clicar em "Apagar"
     esvazia(){

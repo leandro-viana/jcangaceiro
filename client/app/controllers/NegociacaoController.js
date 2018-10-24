@@ -40,14 +40,14 @@ class NegociacaoController{
             }
         }
 
-
+        /*
         // cancelando a submissão do formulário
         event.preventDefault();
         this._negociacoes.adiciona(this._CriaNegociacao());
         this._mensagem.texto = 'Negociação adicionada com sucesso';
         // limpando formulário
         this._limparFormulario();
-        
+        */
     }
 
     _limparFormulario(){

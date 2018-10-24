@@ -1,3 +1,4 @@
+// client/app/domain/negociacao/NegociacaoService.js
 class NegociacaoService {
 
     constructor() {
