@@ -5,7 +5,7 @@ class ProxyFactory{
         return new Proxy(objeto,{
             get(target, prop, receiver){
                 
-                if(ProxyFactory._ehFuncao(target[prop]) && prop.includes(prop)){
+                if(ProxyFactory._ehFuncao(target[prop]) && props.includes(prop)){
 
                         return function(){
                             console.log(`"${prop}" disparou a armadilha`);
