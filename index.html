@@ -43,12 +43,12 @@
     <br>
     <br>
     <div id="negociacoes"></div><!-- entrou no mesmo local onde tinhamos a <table>-->
-
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.js"></script>
     <script>
         System 
             .import('app/app.js')
-            .catch(err => console.error(err))
+            .catch(err => console.error(err));
     </script>
 </body>
 </html>

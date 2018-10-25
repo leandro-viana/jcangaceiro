@@ -1,15 +1,14 @@
 // client/app/controllers/NegociacaoController.js
 import { Negociacoes, NegociacaoService, Negociacao } from '../domain/index.js';
-import {NegociacoesView, MensagemView, Mensagem, DateConverter} from '..ui/index.js';
-import {getNegociacaoDao, Bind, getExceptionMessage } from '../util/index.js'; 
+import {NegociacoesView, MensagemView, Mensagem, DateConverter} from '../ui/index.js';
+import {getNegociacaoDao, Bind, getExceptionMessage, debounce, controller, bindEvent } from '../util/index.js'; 
 
 
+@controller('#data', '#quantidade', '#valor')
 export class NegociacaoController{
-    constructor(){
-        const $ = document.querySelector.bind(document);
-        this._inputData = $('#data');
-        this._inputQuantidade = $('#quantidade');
-        this._inputValor = $('#valor');        
+    constructor(_inputData, _inputQuantidade, _inputValor){
+        
+        Object.assign(this, {_inputData, _inputQuantidade, _inputValor})     
         
         // não passa mais "adiciona" e "esvazia" dentro de um aray
 
@@ -38,11 +37,13 @@ export class NegociacaoController{
             const negociacoes = await dao.listaTodos();
             negociacoes.forEach(negociacao => this._negociacoes.adiciona(negociacao));
             
-        } catch(err) {
+        } catch (err) {
             this._mensagem.texto = getExceptionMessage(err);
         }
 
     }
+    @bindEvent('submit', '.form')
+    @debounce()
     async adiciona(event){
         
         try{
@@ -86,6 +87,7 @@ export class NegociacaoController{
         );
     }
     // Chamada do botão "Apagar"
+    @bindEvent('click', '#botao-apaga')
     async apaga(){
         try {
             const dao = await getNegociacaoDao();
@@ -93,10 +95,12 @@ export class NegociacaoController{
             this._negociacoes.esvazia();
             this._mensagem.texto = 'Negociações apagadas com sucesso.';
 
-        }catch{
+        }catch (err){
             this._mensagem.texto = getExceptionMessage(err);
         }
     }
+    @bindEvent('click', '#botao-importa')
+    @debounce()
     async importaNegociacoes() {
 
         try {
@@ -107,11 +111,10 @@ export class NegociacaoController{
 
             .forEach(negociacao => this._negociacoes.adiciona(negociacao));
             this._mensagem.texto = 'Negociações do período importadas com sucesso';
-        } catch(err){
+        } catch (err){
             this._mensagem.texto = getExceptionMessage(err);
         }
        
     }
-
 
 }
